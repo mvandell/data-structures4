@@ -6,24 +6,6 @@ class Node {
     }
 }
 
-class LinkedList {
-    constructor(head = null) {
-        this.head = head;
-    }
-    add(data) {
-        const newNode = new Node(data);
-        if (this.head === null) {
-            this.head = newNode;
-        }
-        let current = this.head;
-        while (current.next !== null) {
-            current = current.next;
-        }
-        current.next = newNode;
-    }
-}
-
-const linkedList = new LinkedList();
 const node = new Node(1);
 const node2 = new Node(2);
 const node3 = new Node(3);
@@ -37,5 +19,20 @@ node4.next = node5;
 const oldHead = node.data;
 
 function reverseList(head) {
-            
+    if (head === null || head.next === null) {
+        return head;
+    }
+    
+    const reverseLinks = reverseList(head.next);
+
+    head.next.next = head;
+    head.next = null;
+
+    return reverseLinks;
 }
+
+let current = reverseList(node);
+while (current !== null) {
+    console.log(current.data);
+    current = current.next;
+};

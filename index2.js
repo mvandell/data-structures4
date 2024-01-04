@@ -34,6 +34,8 @@ node2.next = node3;
 node3.next = node4;
 node4.next = node5;
 
+const oldHead = node.data;
+
 function reverseList(head) {
-    
+            
 }
